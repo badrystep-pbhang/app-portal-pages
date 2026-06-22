@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 – 发现值得投入的游戏</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #f6f7f9;
+        }
+        /* Hero – 深色头图 */
+        .hero {
+            background: linear-gradient(145deg, #0f0f13 0%, #1e1e28 100%);
+            color: #eceef2;
+            padding: 4rem 1.5rem 3.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -60%;
+            left: -30%;
+            width: 160%;
+            height: 160%;
+            background: radial-gradient(circle at 30% 40%, rgba(96, 165, 250, 0.08), transparent 70%);
+            pointer-events: none;
+        }
+        .hero-content {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+        .hero h1 span {
+            color: #7cb9f7;
+        }
+        .hero p {
+            font-size: 1.15rem;
+            max-width: 620px;
+            margin: 0 auto 1.8rem;
+            color: #c3c7d0;
+        }
+        .hero .tagline {
+            display: inline-block;
+            background: rgba(124, 185, 247, 0.12);
+            border: 1px solid rgba(124, 185, 247, 0.25);
+            border-radius: 60px;
+            padding: 0.4rem 1.4rem;
+            font-size: 0.85rem;
+            color: #b1cbf0;
+            letter-spacing: 0.3px;
+        }
+
+        /* 公共容器 */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* 优势区 – 浅色正文区 */
+        .features {
+            background: #ffffff;
+            padding: 3.5rem 0 3rem;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 1.8rem;
+        }
+        .feature-card {
+            background: #fafbfc;
+            border-radius: 16px;
+            padding: 1.8rem 1.6rem;
+            border: 1px solid #e5e9f0;
+            transition: box-shadow 0.2s, transform 0.15s;
+        }
+        .feature-card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+            transform: translateY(-2px);
+        }
+        .feature-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #111;
+        }
+        .feature-card p {
+            font-size: 0.95rem;
+            color: #3d3f45;
+        }
+        .feature-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.4rem;
+            display: inline-block;
+            background: #eef2f8;
+            width: 44px;
+            height: 44px;
+            line-height: 44px;
+            text-align: center;
+            border-radius: 12px;
+        }
+
+        /* 说明区 – 场景与提示 */
+        .explain {
+            background: #ffffff;
+            padding: 2.5rem 0 3.2rem;
+            border-top: 1px solid #eef0f4;
+        }
+        .explain-header {
+            text-align: center;
+            margin-bottom: 2.2rem;
+        }
+        .explain-header h2 {
+            font-size: 1.7rem;
+            font-weight: 550;
+            color: #191c20;
+        }
+        .explain-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .explain-text {
+            flex: 2;
+            min-width: 260px;
+        }
+        .explain-text p {
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+            color: #2a2c31;
+        }
+        .explain-note {
+            flex: 1.2;
+            background: #f4f6fa;
+            border-radius: 18px;
+            padding: 1.6rem 1.8rem;
+            border-left: 4px solid #7cb9f7;
+        }
+        .explain-note h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: #0f1b2e;
+        }
+        .explain-note p {
+            font-size: 0.92rem;
+            color: #363a42;
+        }
+
+        /* FAQ 摘要 */
+        .faq-summary {
+            background: #f6f7f9;
+            padding: 3rem 0 2.8rem;
+        }
+        .faq-summary h2 {
+            font-size: 1.5rem;
+            font-weight: 550;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #191c20;
+        }
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .faq-item {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 1.3rem 1.5rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e0e4ec;
+        }
+        .faq-item h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            color: #121418;
+        }
+        .faq-item p {
+            font-size: 0.9rem;
+            color: #3d4048;
+        }
+
+        /* 底部链接 */
+        .bottom-links {
+            background: #1b1d23;
+            color: #b5b9c4;
+            text-align: center;
+            padding: 2.2rem 1.5rem 2.5rem;
+        }
+        .bottom-links a {
+            color: #7cb9f7;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(124, 185, 247, 0.25);
+            transition: color 0.2s, border-color 0.2s;
+        }
+        .bottom-links a:hover {
+            color: #aad0ff;
+            border-bottom-color: #aad0ff;
+        }
+        .bottom-links p {
+            margin: 0.5rem 0;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .bottom-links .small-note {
+            font-size: 0.8rem;
+            color: #7d8390;
+            margin-top: 1.2rem;
+        }
+
+        /* inline link inside text (强调色) */
+        .inline-link {
+            color: #2266cc;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: #b0cbf0;
+        }
+        .inline-link:hover {
+            color: #0a3e82;
+            text-decoration-color: #0a3e82;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .features {
+                padding: 2.2rem 0 2rem;
+            }
+            .explain-content {
+                flex-direction: column;
+            }
+            .explain-note {
+                border-left: 0;
+                border-top: 4px solid #7cb9f7;
+                padding: 1.2rem;
+            }
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- hero 区 -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="tagline">游戏 · 发现 · 沉淀</div>
+            <h1>找到你真正<span>爱游戏</span>的理由</h1>
+            <p>不论你是硬核玩家还是休闲体验派，这里帮你快速识别一款游戏是否值得花时间。从类型、叙事到手感，直接呈现核心信息。</p>
+        </div>
+    </section>
+
+    <!-- 优势区 -->
+    <section class="features">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 0.6rem;">
+                <h2 style="font-weight: 550; font-size: 1.5rem; color: #13161c;">为什么先看这里</h2>
+                <p style="color: #4b4f58; max-width: 500px; margin: 0.3rem auto 0;">你不需要翻阅十几篇评测，就能把握游戏轮廓</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>用途一目了然</h3>
+                    <p>每个游戏条目都标注适合场景：单人沉浸、联机开黑、短时放松或深度策略。匹配你的当前需求。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧩</div>
+                    <h3>信息层级干净</h3>
+                    <p>类型、平台、时长、语言支持集中展示。没有冗余的排行榜和干扰弹窗，阅读体验更专注。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📌</div>
+                    <h3>持续收录与筛选</h3>
+                    <p>团队保持对独立游戏与中小型作品的关注，收录标准偏向“有特点”而非“热门”，让选择更多样。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 说明区：场景+提示 -->
+    <section class="explain">
+        <div class="container">
+            <div class="explain-header">
+                <h2>如果你曾这样犹豫过</h2>
+            </div>
+            <div class="explain-content">
+                <div class="explain-text">
+                    <p>看到一款游戏宣传截图很吸引人，但不知道实际玩起来什么节奏？或者商店页面写得含糊，不确定是否对胃口。这时候你需要的不是更多广告语，而是一份直白的、基于体验的摘要——<a href="https://page-iyouxi.com" class="inline-link">爱游戏</a>做的就是这件事：帮你过滤噪音，呈现关键特征。</p>
+                    <p>另外，很多游戏在开头几小时和后期体验差异很大。所以我们除了描述整体风格，也会标注“前期引导是否友好”“中期是否容易倦怠”等细节，让你更清楚自己会面对什么。</p>
+                </div>
+                <div class="explain-note">
+                    <h4>一点提示</h4>
+                    <p>游戏偏好是主观的。页面上的信息来自编辑体验和社区反馈汇总，可以作为参考，但最终是否合拍，还是推荐亲自试试序章或试玩版。我们更希望你因为了解而选择，而非因为宣传而冲动。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ 摘要 -->
+    <section class="faq-summary">
+        <div class="container">
+            <h2>常见问题 · 摘要</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4>网站收录游戏的标准是什么？</h4>
+                    <p>优先收录有明确玩法特点、并且适合大众或特定受众的作品。不单纯按热度或评分排序，更看重可玩性和辨识度。</p>
+                </div>
+                <div class="faq-item">
+                    <h4>会不会包含手游或主机游戏？</h4>
+                    <p>会。只要游戏有足够多的可讨论内容，无论平台（PC、主机、移动端）都在收录范围内。每个页面会标注平台信息。</p>
+                </div>
+                <div class="faq-item">
+                    <h4>信息多久更新一次？</h4>
+                    <p>大型更新或新作发布后通常一周内会有内容补充。日常细节修正不定期进行。你可以把页面当作一个相对稳定的参考。</p>
+                </div>
+                <div class="faq-item">
+                    <h4>我能提交自己喜欢的游戏吗？</h4>
+                    <p>目前主要通过团队筛选和社区推荐两种方式。未来计划开放提交通道，让更多人参与到收录中，请留意后续变化。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部链接 -->
+    <footer class="bottom-links">
+        <div class="container">
+            <p>如果你正在寻找一个能快速判断游戏是否适合你的地方，可以看看 <a href="https://page-iyouxi.com">爱游戏</a> 收录的内容。</p>
+            <p style="margin-top: 0.2rem;">页面基于实际体验整理，不包含付费推广条目。</p>
+            <div class="small-note">
+                © 2025 · 仅供参考与交流
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
